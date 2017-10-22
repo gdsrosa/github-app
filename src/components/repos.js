@@ -6,7 +6,13 @@ const Repos = ({className, title, repos}) => {
   return (
     <div className={className}>
       <h2>{title}</h2>
-      { repos.map((repo, index) => (<li key={repo.link}><a href={repo.link}>{repo.name}</a></li>)) }
+      <ul>
+        {repos.map((repo, index) => (
+          <li key={index}>
+            <a href={repo.link}>{repo.name}</a>
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }
