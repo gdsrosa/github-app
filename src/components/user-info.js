@@ -1,22 +1,29 @@
 'use strict'
 
-import React, { Component } from 'react'
+import React, { PropTypes } from 'react'
 
-class UserInfo extends Component {
-  render () {
-    return (
-      <div className='user-info'>
-        <img src='https://avatars3.githubusercontent.com/u/13604523?v=4' />
-        <h1><a href='https://github.com/gdsrosa'>Gabriel Rosa</a></h1>
+const UserInfo = ({userInfo}) => (
+  <div className='user-info'>
+    <img src={userInfo.photo} />
+    <h1><a href={`https://github.com/${userInfo.login}`}>{userInfo.username}</a></h1>
 
-        <ul className='repos-info'>
-          <li>Respositórios: 13</li>
-          <li>Seguidores: 1</li>
-          <li>Seguindo: 6</li>
-        </ul>
-      </div>
-    )
-  }
+    <ul className='repos-info'>
+      <li>Respositórios: {userInfo.repos}</li>
+      <li>Seguidores: {userInfo.followers}</li>
+      <li>Seguindo: {userInfo.following}</li>
+    </ul>
+  </div>
+)
+
+UserInfo.propTypes = {
+  userInfo: PropTypes.shape({
+    username: PropTypes.string.isRequired,
+    photo: PropTypes.string.isRequired,
+    login: PropTypes.string.isRequired,
+    repos: PropTypes.number.isRequired,
+    following: PropTypes.number.isRequired,
+    followers: PropTypes.number.isRequired
+  })
 }
 
 export default UserInfo
