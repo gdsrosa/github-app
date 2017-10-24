@@ -1,16 +1,17 @@
 'use strict'
 
-import React, { Component } from 'react'
+import React, { PropTypes } from 'react'
 
-class Actions extends Component {
-  render () {
-    return (
-      <div className='actions'>
-        <button className='btn btn-primary'>Ver Respositórios</button>
-        <button className='btn btn-primary'>Ver favoritos</button>
-      </div>
-    )
-  }
+const Actions = ({getRepos, getStarred}) => (
+  <div className='actions'>
+    <button onClick={getRepos} className='btn btn-primary'>Ver Respositórios</button>
+    <button onClick={getStarred} className='btn btn-primary'>Ver favoritos</button>
+  </div>
+)
+
+Actions.propType = {
+  getRepos: PropTypes.func.isRequired,
+  getStarred: PropTypes.func.isRequired
 }
 
 export default Actions

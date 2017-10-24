@@ -1,15 +1,22 @@
 'use strict'
 
-import React, { Component } from 'react'
+import React, { PropTypes } from 'react'
 
-class Search extends Component {
-  render () {
-    return (
-      <div className='search'>
-        <input type='search' className='form-control' placeholder='Digite o nome de usuário no github' />
-      </div>
-    )
-  }
+const Search = ({isDisabled, handleSearch}) => (
+  <div className='search'>
+    <input
+      type='search'
+      className='form-control'
+      placeholder='Digite o nome de usuário no github'
+      onKeyUp={handleSearch}
+      disabled={isDisabled}
+    />
+  </div>
+)
+
+Search.propTypes = {
+  handleSearch: PropTypes.func.isRequired,
+  isDisabled: PropTypes.bool.isRequired
 }
 
 export default Search
